@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Runtime.InteropServices.Marshalling;
 using System.Text;
@@ -7,8 +8,10 @@ using System.Threading.Tasks;
 
 namespace ConnectFourOvarro
 {
+    
     public static class Interface
     {
+        
         public static int StringMenu(string[] Options)
         {
             for (int i = 1; i < Options.Length - 1 ; i++)
@@ -80,12 +83,21 @@ namespace ConnectFourOvarro
 
         public static void DisplayBoard(int[,] Board)
         {
+            Console.Clear();
             Console.WriteLine("Current Board");
             Console.WriteLine();
 
-            for (int i = 0; i<Board.GetLength(0); i++) 
+            for (int i = 0; i<Board.GetLength(1); i++) 
             {
-                Console.Write(" " + (i+1).ToString() + " ");
+                if (i < 10)
+                {
+                    Console.Write("  " + (i + 1).ToString() + " ");
+                }
+                else
+                {
+                    Console.Write(" " + (i + 1).ToString() + " ");
+                }
+                
             
             }
 
@@ -98,16 +110,16 @@ namespace ConnectFourOvarro
                     switch (Board[i, j])
                     {
                         case 0:
-                            Console.Write(" - ");
+                            Console.Write("  - ");
                             break;
                         case 1: 
                             Console.ForegroundColor = ConsoleColor.Red;
-                            Console.Write(" R ");
+                            Console.Write("  R ");
                             Console.ForegroundColor = ConsoleColor.White;
                             break;
                         case 2:
                             Console.ForegroundColor = ConsoleColor.Yellow;
-                            Console.Write(" Y ");
+                            Console.Write("  Y ");
                             Console.ForegroundColor = ConsoleColor.White;
                             break;
 
@@ -118,6 +130,26 @@ namespace ConnectFourOvarro
                 Console.WriteLine();
 
             }
+
+            Console.WriteLine();
+        }
+
+        public static void TurnText(int player, int turn)
+        {
+            Console.WriteLine("Turn " + turn.ToString());
+            Console.WriteLine("Player " + player.ToString() + ": ");
+
+        }
+
+        public static void FullColumn(int[,] Board, int player, int turn)
+        {
+            
+            DisplayBoard(Board);
+            TurnText(player, turn);
+
+            Console.WriteLine();
+            Console.WriteLine("Column is full, choose different column");
+            Console.WriteLine();
         }
 
 
