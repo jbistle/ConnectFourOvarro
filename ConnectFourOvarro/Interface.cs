@@ -152,6 +152,24 @@ namespace ConnectFourOvarro
             Console.WriteLine();
         }
 
+        public static void WinText(int player)
+        {
+
+
+            switch (player)
+            {
+                case 1:
+                    Console.ForegroundColor= ConsoleColor.Red;
+                    break;
+                case 2:
+                    Console.ForegroundColor= ConsoleColor.Yellow;
+                    break;
+            }
+
+            Console.WriteLine("Player " + player.ToString() + " wins!");
+            Console.ForegroundColor = ConsoleColor.White;
+        }
+
 
 
     }

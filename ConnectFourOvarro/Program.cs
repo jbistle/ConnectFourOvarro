@@ -13,12 +13,20 @@ int[,] Board = new int[BoardH, BoardW];
 
 int turn = 0;
 
-int player = 1;
+int player = 0;
 
 bool win = false;
 
 while ( win == false)
 {
+    turn++;
+    player++;
+
+    if (player == 3)
+    {
+        player = 1;
+    }
+
     Interface.DisplayBoard(Board);
     Interface.TurnText(player, turn);
 
@@ -38,7 +46,7 @@ while ( win == false)
     
 
 
-    for (int i = BoardH - 1; i >= 0; i = i - 1)
+    for (int i = BoardH - 1; i >= 0; i = i - 1) //placing token
     {
         if (Board[i, column-1] == 0)
         {
@@ -47,13 +55,89 @@ while ( win == false)
         }
     }
 
-    turn++;
-    player++;
+    //Check if win
 
-    if (player == 3)
+    for (int i = 0; i < Board.GetLength(0); i++)
     {
-        player = 1;
+        
+
+        for (int j = 0; j < Board.GetLength(1); j++)
+        { 
+
+            
+
+            bool check = false;
+            int colour = Board[i, j];
+            if (colour == 0) { continue; } //skip if selected is blank
+
+            if (!(j + WinLen > Board.GetLength(1))) // if currentw + lenofwin isn't the end of the board, check for horizontal win
+            {
+                
+                check = true;
+
+                for (int k = 1; k < WinLen; k++)
+                {
+                    if (Board[i,j+k] != colour)
+                    {
+                        check = false;
+                        break;
+                    }
+                }
+
+
+                if (check) 
+                {
+                    win = true;
+                    break; 
+                }
+            }
+
+
+            if (!(i + WinLen > Board.GetLength(0))) // if currenth + lenofwin isn't the end of the board, check for vertical win
+            {
+                check = true;
+
+                for (int k = 1; k < WinLen; k++)
+                {
+                    if (Board[i+k, j] != colour)
+                    {
+                        check = false;
+                        break;
+                    }
+                }
+
+
+                if (check)
+                {
+                    win = true;
+                    break;
+                }
+            }
+
+
+
+            if (win)
+            {
+                break;
+            }
+            
+        
+        }
+
+        if (win)
+        {
+            break;
+        }
+
     }
 
+
+
+    
+
 }
+
+Interface.DisplayBoard(Board);
+
+Interface.WinText(player);
 
