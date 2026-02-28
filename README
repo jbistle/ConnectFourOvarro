@@ -2,3 +2,9 @@ The features of this project are:
 - Select length of tokens in a row to win ( 3-7 )
 - Select height and width of board ( 7-30 )
 - Players take turns placing tokens until win condition is met
+
+Each turn, the board is displayed, updated from the previous turn's action. The tokens are labelled R and Y with the corresponding colours so it is clear.
+
+The board is stored as an array of numbers. 0 is empty, and 1 and 2 correspond to the different players. More players could be added in a future version.
+
+Parts of the program that used Console e.g. Console.WriteLine are in a separate class named Interface, this means it would be simple to replace the UI.
