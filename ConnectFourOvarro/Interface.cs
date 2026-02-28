@@ -12,40 +12,7 @@ namespace ConnectFourOvarro
     public static class Interface
     {
         
-        public static int StringMenu(string[] Options)
-        {
-            for (int i = 1; i < Options.Length - 1 ; i++)
-            {
-                Console.WriteLine(i.ToString() + ". " + Options[i]);
-            }
-
-            Console.WriteLine("Please input option");
-
-            int ans = 0;
-
-            while (ans == 0) 
-            {
-                string input = Console.ReadLine();
-
-                try
-                {
-                    ans = Int32.Parse(input);
-                    if (ans < Options.Length-1) { throw new Exception(); }
-                }
-                catch 
-                {
-                    Console.WriteLine("Input valid option");
-                    ans = 0;
-                
-                }
-            }
-
-            Console.Clear();
-
-            return ans;
-            
-            
-        }
+        
 
         public static int SelectInt(int lower, int upper, string instruction)
         {
