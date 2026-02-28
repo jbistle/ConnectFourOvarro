@@ -78,6 +78,48 @@ namespace ConnectFourOvarro
             return ans;
         }
 
+        public static void DisplayBoard(int[,] Board)
+        {
+            Console.WriteLine("Current Board");
+            Console.WriteLine();
+
+            for (int i = 0; i<Board.GetLength(0); i++) 
+            {
+                Console.Write(" " + (i+1).ToString() + " ");
+            
+            }
+
+            Console.WriteLine() ;
+
+            for (int i = 0; i < Board.GetLength(0); i++)
+            {
+                for (int j = 0; j < Board.GetLength(1); j++)
+                {
+                    switch (Board[i, j])
+                    {
+                        case 0:
+                            Console.Write(" - ");
+                            break;
+                        case 1: 
+                            Console.ForegroundColor = ConsoleColor.Red;
+                            Console.Write(" R ");
+                            Console.ForegroundColor = ConsoleColor.White;
+                            break;
+                        case 2:
+                            Console.ForegroundColor = ConsoleColor.Yellow;
+                            Console.Write(" Y ");
+                            Console.ForegroundColor = ConsoleColor.White;
+                            break;
+
+                    }
+
+                    
+                }
+                Console.WriteLine();
+
+            }
+        }
+
 
 
     }
