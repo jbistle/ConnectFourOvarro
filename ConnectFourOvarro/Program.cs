@@ -114,6 +114,48 @@ while ( win == false)
                 }
             }
 
+            if (!(i + WinLen > Board.GetLength(0)) && !(j + WinLen > Board.GetLength(1))) // if currenth + lenofwin isn't the end of the board, and currentw + lenofwin isn't the end of the board check for diag win NE to SW
+            {
+                check = true;
+
+                for (int k = 1; k < WinLen; k++)
+                {
+                    if (Board[i+k, j+k] != colour)
+                    {
+                        check = false;
+                        break;
+                    }
+                }
+
+
+                if (check)
+                {
+                    win = true;
+                    break;
+                }
+            }
+
+            if (!(i + WinLen > Board.GetLength(0)) && !(j - WinLen + 1 < 0)) // if currenth + lenofwin isn't the end of the board, and currentw - lenofwin isn't the end of the board check for diag win NW to SE
+            {
+                check = true;
+
+                for (int k = 1; k < WinLen; k++)
+                {
+                    if (Board[i + k, j - k] != colour)
+                    {
+                        check = false;
+                        break;
+                    }
+                }
+
+
+                if (check)
+                {
+                    win = true;
+                    break;
+                }
+            }
+
 
 
             if (win)
