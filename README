@@ -1,1 +1,4 @@
-Create file
+The features of this project are:
+- Select length of tokens in a row to win ( 3-7 )
+- Select height and width of board ( 7-30 )
+- Players take turns placing tokens until win condition is met
