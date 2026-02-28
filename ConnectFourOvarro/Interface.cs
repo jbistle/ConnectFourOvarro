@@ -84,6 +84,7 @@ namespace ConnectFourOvarro
         public static void DisplayBoard(int[,] Board)
         {
             Console.Clear();
+            Console.WriteLine("\x1b[3J"); //as clearing board doesn't work with larger boards
             Console.WriteLine("Current Board");
             Console.WriteLine();
 
@@ -137,8 +138,22 @@ namespace ConnectFourOvarro
         public static void TurnText(int player, int turn)
         {
             Console.WriteLine("Turn " + turn.ToString());
+
+            switch (player)
+            {
+                case 1:
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    break;
+                case 2:
+                    Console.ForegroundColor = ConsoleColor.Yellow;
+                    break;
+            }
+
+
+
             Console.WriteLine("Player " + player.ToString() + ": ");
 
+            Console.ForegroundColor = ConsoleColor.White;
         }
 
         public static void FullColumn(int[,] Board, int player, int turn)
