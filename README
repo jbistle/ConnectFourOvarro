@@ -2,6 +2,7 @@ The features of this project are:
 - Select length of tokens in a row to win ( 3-7 )
 - Select height and width of board ( 7-30 )
 - Players take turns placing tokens until win condition is met
+- The winner is displayed as well as the final board
 
 Each turn, the board is displayed, updated from the previous turn's action. The tokens are labelled R and Y with the corresponding colours so it is clear.
 
